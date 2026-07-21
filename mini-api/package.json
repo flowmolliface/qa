@@ -1,0 +1,13 @@
+{
+  "name": "taskflow-mini-api",
+  "version": "1.0.0",
+  "description": "REST API для демо-приложения TaskFlow",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

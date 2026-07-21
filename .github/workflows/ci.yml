@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api-tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Start API
+        working-directory: mini-api
+        run: |
+          node src/index.js &
+          sleep 2
+          curl -f http://localhost:3001/health
+
+      - name: Install & test API
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npm test
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: e2e-tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install todo-app
+        working-directory: todo-app
+        run: npm ci
+
+      - name: Install e2e & Playwright
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Run E2E
+        run: |
+          cd ../todo-app && npm run dev &
+          sleep 5
+          npm test
+
+  build-todo:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: todo-app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm ci
+      - run: npm run build

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Портфолио QA-тестировщика и web-разработчика" />
+  <title>Портфолио — QA & Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <header class="hero">
+    <nav class="nav">
+      <span class="logo">Portfolio</span>
+      <div class="nav-links">
+        <a href="#bug-hunt">Bug Hunt</a>
+        <a href="#projects">Проекты</a>
+        <button id="theme-toggle" class="theme-btn" aria-label="Переключить тему">◐</button>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <p class="tag">QA Engineer · Web Developer</p>
+      <h1>Тестирование и разработка<br />веб-приложений</h1>
+      <p class="lead">
+        Не просто «учебные проекты» — связанная экосистема: приложение, API,
+        автотесты и интерактивный Bug Hunt для ручного тестирования.
+      </p>
+      <div class="hero-actions">
+        <a href="#bug-hunt" class="btn primary">Попробовать Bug Hunt</a>
+        <a href="#projects" class="btn ghost">Все проекты</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="bug-hunt" class="section hunt-section">
+      <div class="hunt-grid">
+        <div>
+          <span class="badge hot">Фишка</span>
+          <h2>Bug Hunt — найди 4 бага</h2>
+          <p class="section-lead">
+            TaskFlow в специальном режиме содержит намеренные дефекты.
+            Это live-демо exploratory testing: воспроизведи, опиши, отметь в панели.
+          </p>
+          <ul class="hunt-features">
+            <li>Фильтры и счётчики ведут себя «странно»</li>
+            <li>Валидация обходится неочевидным способом</li>
+            <li>Checkbox может переключать «чужую» задачу</li>
+          </ul>
+          <a href="./todo-app/?hunt=1" class="btn primary" data-todo-link="?hunt=1">Открыть Bug Hunt</a>
+          <a href="https://github.com/flowmolliface/qa/tree/main/bug-hunt" class="link-muted">Инструкция →</a>
+        </div>
+        <div class="terminal" aria-label="Пример запуска тестов">
+          <div class="terminal-bar">
+            <span></span><span></span><span></span>
+            <em>powershell</em>
+          </div>
+          <pre class="terminal-body"><code id="terminal-text"></code><span class="cursor">▋</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="section stats">
+      <div class="stat-card">
+        <strong data-count="17">0</strong>
+        <span>автотестов</span>
+      </div>
+      <div class="stat-card">
+        <strong data-count="7">0</strong>
+        <span>проектов</span>
+      </div>
+      <div class="stat-card">
+        <strong data-count="4">0</strong>
+        <span>бага в Hunt</span>
+      </div>
+      <div class="stat-card">
+        <strong>CI</strong>
+        <span>GitHub Actions</span>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Проекты</h2>
+      <div class="grid">
+        <article class="card featured">
+          <span class="badge hot">Interactive</span>
+          <h3>Bug Hunt</h3>
+          <p>Ручной поиск багов в TaskFlow. Для собеседований и резюме.</p>
+          <ul class="stack"><li>Exploratory</li><li>QA</li></ul>
+          <a href="https://github.com/flowmolliface/qa/tree/main/bug-hunt">README →</a>
+        </article>
+
+        <article class="card">
+          <span class="badge">Web</span>
+          <h3>TaskFlow — Todo App</h3>
+          <p>React SPA с localStorage, валидацией и фильтрами.</p>
+          <ul class="stack"><li>React</li><li>TypeScript</li><li>Vite</li></ul>
+          <a href="https://github.com/flowmolliface/qa/tree/main/todo-app">README →</a>
+        </article>
+
+        <article class="card">
+          <span class="badge">Backend</span>
+          <h3>Mini API + Swagger</h3>
+          <p>REST CRUD и OpenAPI-документация.</p>
+          <ul class="stack"><li>Node.js</li><li>OpenAPI</li></ul>
+          <a href="https://flowmolliface.github.io/qa/mini-api/docs.html">Docs →</a>
+        </article>
+
+        <article class="card">
+          <span class="badge">QA</span>
+          <h3>API Tests</h3>
+          <p>10 автотестов: позитивные и негативные сценарии.</p>
+          <ul class="stack"><li>Playwright</li></ul>
+          <a href="https://github.com/flowmolliface/qa/tree/main/api-tests">README →</a>
+        </article>
+
+        <article class="card">
+          <span class="badge">QA</span>
+          <h3>E2E Tests</h3>
+          <p>7 UI-тестов: Page Object, data-testid.</p>
+          <ul class="stack"><li>Playwright</li></ul>
+          <a href="https://github.com/flowmolliface/qa/tree/main/e2e-tests">README →</a>
+        </article>
+
+        <article class="card">
+          <span class="badge">QA</span>
+          <h3>Bug Reports</h3>
+          <p>Баг-репорты, чек-листы, тест-кейсы.</p>
+          <ul class="stack"><li>Markdown</li></ul>
+          <a href="https://github.com/flowmolliface/qa/tree/main/bug-report-samples">README →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section alt">
+      <h2>Навыки</h2>
+      <div class="skills">
+        <div class="skill-group">
+          <h3>Тестирование</h3>
+          <p>Функциональное, регрессионное, exploratory, API, E2E</p>
+        </div>
+        <div class="skill-group">
+          <h3>Автоматизация</h3>
+          <p>Playwright, CI/CD, OpenAPI, test documentation</p>
+        </div>
+        <div class="skill-group">
+          <h3>Разработка</h3>
+          <p>HTML/CSS/JS, React, TypeScript, REST API</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Контакты</h2>
+      <p class="contact-text">Замените ссылки на свои перед публикацией.</p>
+      <ul class="contacts">
+        <li><a href="mailto:your@email.com">your@email.com</a></li>
+        <li><a href="https://t.me/yourusername" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="https://github.com/flowmolliface" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 · Portfolio monorepo</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

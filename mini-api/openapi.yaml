@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: TaskFlow Mini API
+  version: 1.0.0
+  description: REST API для демо-приложения TaskFlow
+servers:
+  - url: http://localhost:3001
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+  /api/tasks:
+    get:
+      summary: Список задач
+      responses:
+        '200':
+          description: Массив задач
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+    post:
+      summary: Создать задачу
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title]
+              properties:
+                title:
+                  type: string
+                  example: Купить молоко
+      responses:
+        '201':
+          description: Создано
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Ошибка валидации
+  /api/tasks/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Получить задачу
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Не найдено
+    patch:
+      summary: Обновить задачу
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                completed:
+                  type: boolean
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Не найдено
+    delete:
+      summary: Удалить задачу
+      responses:
+        '200':
+          description: Удалено
+        '404':
+          description: Не найдено
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        completed:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
