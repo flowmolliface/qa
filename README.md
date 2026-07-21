@@ -43,4 +43,4 @@ cd e2e-tests && npm install && npx playwright install && npm test
 - **CI** — API-тесты, E2E и build при push
 - **GitHub Pages** — landing + todo-app + swagger (workflow `pages.yml`)
 
-После первого push: Settings → Pages → Source: **GitHub Actions**.
+После первого успешного deploy: **Settings → Pages → Source:** branch **`gh-pages`** / **`/(root)`**.
